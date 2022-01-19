@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet/less" type="text/css" href="/style.less" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Anton&family=Ephesis&family=Gloria+Hallelujah&family=Herr+Von+Muellerhoff&family=Inconsolata:wght@200&family=Indie+Flower&family=Julius+Sans+One&family=Kosugi+Maru&family=Marcellus+SC&family=Merienda&family=Montserrat&family=Nixie+One&family=Orbitron&family=Poiret+One&family=Press+Start+2P&family=Rajdhani:wght@300&family=Raleway+Dots&family=Righteous&family=Roboto&family=Rock+Salt&family=Russo+One&family=Staatliches&family=Tourney:wght@100&family=VT323&family=WindSong&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/451/fabric.js" integrity="sha512-dtiNm9C8FwmoX5+zAtJTTKM9EBXVlmdlH5AwBkSldaBnvAG2gnQnhzfbtCXMyZeOJrMEXynqWk1aTkhw1YXTmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="fabric.js"></script>
+    <script src="https://unpkg.com/fabric@4.6.0/dist/fabric.min.js"></script>
+    <script src="diploma.js"></script>
+</head>
+<body> 
+    <header>
+        <button id="save"> <a id="download" download="myImage.jpg" href=""> download</a>  <img src="img/save.png" style="height:20px;"></button>
+    </header>
+<!-- <div id="cursor" style="display: none; width: 5px; height: 5px;"></div> -->
+    <div id="canvas_design">
+        <div id="forCanvas">
+            <div id="del">
+                <ul>
+                    <li>
+                        opacity
+                        <input type="range" min=0 max=100 id="opacity_range" >
+                    </li>
+                    <li id="remove"><img src="img/delete.png"> delete element</li>
+                    <li id="clear"><img src="img/clear.png">clear all</li>
+                    <li id="eraser"><img src="img/eraser.png">eraser</li>
+
+                    <li id="stop" style="background-color: rgba(220, 20, 60, 0.671);"><img src="img/stop.png">stop</li>
+
+                    <li id="eraserWidth"> 
+                        <span id="rangeValue">size</span>
+                        <input id="range" type="range" min="0" max="200">
+                    </li>
+                </ul>
+            </div>
+
+            <canvas id="canvas" width="800" height="500"> </canvas>
+        </div>
+
+        <div id="buttons_toReveal">
+            <div class="buttons" id="bgDesign_button"></div>
+            <div class="buttons" id="shapesDesign_button"></div>
+            <div class="buttons" id="imgDesign_button"></div>
+            <div class="buttons" id="textDesign_button"></div>
+            <div class="buttons" id="drawDesign_button"></div>
+        </div>
+        
+        <div id="design">
+            <div id="bgDesign">
+                <h4>Background</h4>
+                <p style="color: rgb(228, 228, 228);">tap and chose color <img src="img/point.png" style="height: 20px;"></p>
+
+                <div id="bgHolder">
+                    <p id="color_val"></p>
+                    <input type="color" id="bgColor">
+                </div>
+            </div>
+
+            <div id="shapesDesign">
+                <h4>Shapes</h4>
+                <p style="color: rgb(228, 228, 228);">
+                    chose your shape 
+                    <img src="img/point.png" style="height: 20px;"></p>
+                <button id="circle" class="shapes">circle</button>
+                <button id="rect" class="shapes">rect</button>
+                <button id="triangle" class="shapes">triange</button> 
+
+                <div style="margin-top: 20px;">
+                    shape color:<input type="color" id="shapeColor">
+                </div> 
+
+                <div id="forStroke" style="text-align: left; display: flex;"> 
+                    <p style="font-size: 18px; width: 70%;">stroke</p> 
+                    <p style="width: 30%;">
+                        <img id="plus" src="img/plus.png" style="height: 20px;"> 
+                        <img id="minus" src="img/minus.png" style="height: 20px;">
+                    </p>
+                </div> 
+                <span id="strokeParameters" style="text-align: left;">
+                    stroke width <input type="number" id="stroke_width" value="0.1"> <br>
+                    stroke color:<input type="color" id="stroke_color">
+                </span>
+            </div>
+
+            <div id="imgDesign">
+                <h4>Image</h4>
+                <p style="color: rgb(228, 228, 228);">put your link down bellow <img src="img/link.png" style="height: 20px;"> </p>
+                <input type="text" id="url" placeholder="image link">
+                <button id="onloadImg">upload</button>
+            </div>
+
+            <div id="textDesign">
+                <h4>Text</h4>
+                <p style="color: rgb(228, 228, 228);">type your text down bellow <img src="img/typetext.png" style="height: 30px;"> </p>
+                <input type="text" id="text" placeholder="text" > <br>
+
+                <select name="fonts" id="fonts">
+                    <option value="Amatic SC">Amatic SC</option>
+                    <option value="Anton">Anton</option>
+                    <option value="Ephesis">Ephesis</option>
+                    <option value="Gloria Hallelujah">Gloria Hallelujah</option>
+                    <option value="Herr Von Muellerhoff">Herr Von Muellerhoff</option>
+                    <option value="Inconsolata">Inconsolata</option>
+                    <option value="Indie Flower">Indie Flower</option>
+                    <option value="Julius Sans One">Julius Sans One</option>
+                    <option value="Kosugi Maru">Kosugi Maru</option>
+                    <option value="Marcellus SC">Marcellus SC</option>
+                    <option value="Merienda">Merienda</option>
+                    <option value="Montserrat">Montserrat</option>
+                    <option value="Nixie One">Nixie One</option>
+                    <option value="Orbitron">Orbitron</option>
+                    <option value="Poiret One">Poiret One</option>
+                    <option value="Poiret One">Poiret One</option>
+                    <option value="Press Start 2P">Press Start 2P</option>
+                    <option value="Rajdhani">Rajdhani</option>
+                    <option value="Raleway Dots">Raleway Dots</option>
+                    <option value="Roboto">Roboto</option>
+                    <option value="Rock Salt">Rock Salt</option>
+                    <option value="Russo One">Russo One</option>
+                    <option value="Staatliches">Staatliches</option>
+                    <option value="Tourney">Tourney</option>
+                    <option value="VT323">VT323</option>
+                    <option value="WindSong">WindSong</option>
+
+                </select> <br>
+
+                text color: <input type="color" id="text_color" style="height: 20px;"> <br>
+                text size: <input type="number" id="text_size" value="24"> <br>
+                <input type="checkbox" name="deco" id="italicCBox"> <i>italic</i> 
+                <input type="checkbox" name="deco" id="underlineCBox"> <u>underline</u> 
+                <input type="checkbox" name="deco" id="boldCBox"> <b>bold</b> <br>
+                <button id="onloadText">Use</button>
+            </div>
+
+            <div id="drawDesign">
+        <span id="status"></span>
+
+                <h4>Paint</h4>
+                <p style="color: rgb(228, 228, 228);">here you are free to draw anything <img src="img/paint.png" style="height: 30px;"> </p>
+
+                <div>
+                    <button id="draw" style="height: 50px;">Enter drawing mode</button>
+                    <button id="nodraw" style="height: 50px;">Cancel drawing mode</button><br>
+                </div>     
+
+            </div>       
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,77 @@
+#forCanvas {
+  padding: 50px;
+}
+#canvas {
+  background-color: white;
+  margin: 10px;
+  margin: 0 auto;
+}
+#canvas_design {
+  display: flex;
+}
+#forCanvas {
+  width: 70%;
+}
+#design {
+  width: 30%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.219);
+    div{
+    padding: 10px;
+    border-bottom: 1px black solid;
+    }
+    input[type=text] {
+    background-color: rgba(255, 255, 255, 0.158);
+    border: none;
+    border-bottom: 1px solid rgba(255, 251, 0, 0.623);
+    width: 200px;
+    height: 40px;
+    }
+}
+#design input[type=text]:focus {
+  outline: yellow 3px solid;
+  border-radius: 10px;
+}
+#design input[type=text]::placeholder {
+  text-align: center;
+  color: rgba(255, 251, 0, 0.623);
+}
+#design select {
+  width: 150px;
+  height: 25px;
+  background-color: rgba(0, 0, 0, 0.171);
+}
+#design select option {
+  background-color: rgba(0, 0, 0, 0.096);
+}
+#design select option:hover::before {
+  background-color: rgba(0, 0, 0, 0.171);
+}
+#design #bgColor {
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+}
+#design button {
+  width: 80px;
+  height: 30px;
+  border-radius: 10px;
+  color: rgba(255, 251, 0, 0.623);
+  border: 3px rgba(255, 251, 0, 0.623) solid;
+  background-color: rgba(0, 0, 0, 0.322);
+}
+#design button:hover {
+  width: 83px;
+  height: 32px;
+  color: yellow;
+  background-color: rgba(0, 0, 0, 0.555);
+  border: none;
+  cursor: pointer;
+}
+#design #onloadImg {
+  height: 40px;
+}
+#design #onloadImg:hover {
+  height: 42px;
+}
